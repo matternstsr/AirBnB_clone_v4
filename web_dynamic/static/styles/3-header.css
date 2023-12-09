@@ -9,3 +9,6 @@ header .logo {
     left: 20px;
     height: 100%;
 }
+header #api_status {
+    background-color: #ff545f;
+}
