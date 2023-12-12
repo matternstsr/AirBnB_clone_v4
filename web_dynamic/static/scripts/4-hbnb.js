@@ -1,22 +1,20 @@
-// static/scripts/4-hbnb.js
-
 function DocumentReady() {
-    // Check API status on page load
+    // Checking API status on page load
     checkAPIStatus();
-    // Load places on page load
+    // Loading places on page load
     loadPlaces();
-    // Add click event for the search button
+    // Adding click event for the search button
     $('button').click(sendSearchRequest);
 }
 
 function checkAPIStatus() {
-    // Make an AJAX request to check the API status
+    // Making an AJAX request to check the API status
     $.ajax({
         url: 'http://localhost:5001/api/v1/status/',
         type: 'GET',
         success: function (data) {
             console.log('API Status:', data);
-            // Update the circle color based on the API status
+            // Updating the circle color based on the API status
             if (data.status === 'OK') {
                 $('#api_status').addClass('available');
             } else {
@@ -25,14 +23,14 @@ function checkAPIStatus() {
         },
         error: function () {
             console.error('Error checking API status.');
-            // If there's an error, assume API is not available
+            // If there's an error, assume API is not available.. not sure if needed
             $('#api_status').removeClass('available');
         }
     });
 }
 
 function loadPlaces() {
-    // Make an AJAX request to load places
+    // Making an AJAX request to load places
     $.ajax({
         url: 'http://localhost:5001/api/v1/places_search/',
         type: 'POST',
@@ -41,10 +39,10 @@ function loadPlaces() {
         success: function (data) {
             console.log('Places Data:', data);
 
-            // Clear existing places
+            // Clearing existing places
             $('.places').empty();
 
-            // Loop through the result and create article tags
+            // Looping through the result and create article tags
             for (const place of data) {
                 const article = `
                     <article>
@@ -72,12 +70,12 @@ function loadPlaces() {
 }
 
 function sendSearchRequest() {
-    // Get the list of checked amenities
+    // Getting the list of checked amenities
     const amenities = $('input:checked').map(function() {
         return $(this).data('id');
     }).get();
 
-    // Make a new AJAX request for places_search with checked amenities
+    // Making a new AJAX request for places_search with checked amenities
     $.ajax({
         url: 'http://localhost:5001/api/v1/places_search/',
         type: 'POST',
@@ -86,10 +84,10 @@ function sendSearchRequest() {
         success: function (data) {
             console.log('Search Results:', data);
 
-            // Clear existing places
+            // Clearing existing places
             $('.places').empty();
 
-            // Loop through the result and create article tags
+            // Looping through the result and create article tags
             for (const place of data) {
                 const article = `
                     <article>

@@ -9,3 +9,15 @@ body .container {
     max-width: 1000px;
     margin: 30px auto;
 }
+.locations,
+.amenities {
+    display: inline-block;
+    position: relative; /* Adding relative positioning */
+}
+
+.locations .popover,
+.amenities .popover {
+    position: absolute;
+    top: 100%; /* Positioning the popover below the parent element */
+    left: 0;
+}

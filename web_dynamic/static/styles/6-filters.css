@@ -81,23 +81,21 @@ button:hover {
     width: 0px;
 }
 
+.locations .popover,
 .amenities .popover {
     padding: 10px 0;
     margin-left: -5px;
     margin-top: 0%;
 }
-
+.locations .popover ul,
 .amenities .popover ul{
     margin: 0px;
 }
-
+.locations .popover ul li,
 .amenities .popover ul li{
     margin-left: 10px;
 }
 
-.locations .popover {
-    margin-top: 0%;
-}
 .popover ul {
     list-style-type: none;
     padding-bottom: 10px;
