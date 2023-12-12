@@ -1,8 +1,34 @@
+// static/scripts/4-hbnb.js
+
 function DocumentReady() {
+    // Check API status on page load
+    checkAPIStatus();
     // Load places on page load
     loadPlaces();
     // Add click event for the search button
     $('button').click(sendSearchRequest);
+}
+
+function checkAPIStatus() {
+    // Make an AJAX request to check the API status
+    $.ajax({
+        url: 'http://localhost:5001/api/v1/status/',
+        type: 'GET',
+        success: function (data) {
+            console.log('API Status:', data);
+            // Update the circle color based on the API status
+            if (data.status === 'OK') {
+                $('#api_status').addClass('available');
+            } else {
+                $('#api_status').removeClass('available');
+            }
+        },
+        error: function () {
+            console.error('Error checking API status.');
+            // If there's an error, assume API is not available
+            $('#api_status').removeClass('available');
+        }
+    });
 }
 
 function loadPlaces() {
